@@ -3,5 +3,15 @@
       "name": "spring.zipkin.base-url",
       "type": "java.lang.String",
       "description": "base url for zipkin"
+    },
+    {
+      "name": "hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds",
+      "type": "java.lang.String",
+      "description": "Increase the Hystrix timeout to 60s (globally)"
+    },
+    {
+      "name": "hystrix.command.default.execution.timeout.enabled",
+      "type": "java.lang.String",
+      "description": "Disable Hystrix timeout globally (for all services)"
     }
   ]}

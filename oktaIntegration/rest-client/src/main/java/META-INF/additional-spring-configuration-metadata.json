@@ -1,0 +1,7 @@
+{"properties": [
+    {
+      "name": "spring.zipkin.base-url",
+      "type": "java.lang.String",
+      "description": "base url for zipkin"
+    }
+]}

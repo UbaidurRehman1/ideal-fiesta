@@ -29,3 +29,10 @@
 ### URLs
 - http://localhost:9500/employee/1
 - http://localhost:9500/employee
+
+# Rest Client
+### Port Info
+- 8000
+### URLs
+- http://localhost:8000/app/employee/1
+- http://localhost:8000/app/employee

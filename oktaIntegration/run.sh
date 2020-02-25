@@ -8,4 +8,7 @@ cd ..
 cd employee-info-service
 mvn clean package -DskipTests
 cd ..
+cd rest-client
+mvn clean package -DskipTests
+cd ..
 docker-compose up --build
