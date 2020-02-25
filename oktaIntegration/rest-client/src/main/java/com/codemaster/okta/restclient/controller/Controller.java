@@ -7,6 +7,7 @@ import com.codemaster.okta.restclient.proxy.OpenFeignProxy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,9 +19,11 @@ public class Controller
     OpenFeignProxy proxy;
 
     @GetMapping("employee/{id}")
-    public Employee getEmployee(Long id)
+    public Employee getEmployee(@PathVariable("id") Long id)
     {
-        return proxy.getEmployee(id);
+        Employee employee = proxy.getEmployee(id);
+        System.out.println(employee);
+        return employee;
     }
 
     @GetMapping("employee")

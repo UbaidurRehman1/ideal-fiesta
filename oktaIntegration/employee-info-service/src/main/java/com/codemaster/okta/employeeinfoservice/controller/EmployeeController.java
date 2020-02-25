@@ -27,6 +27,7 @@ public class EmployeeController
         Person person = proxy.getPerson(id);
         Employee employee = service.findOne(id);
         employee.addPersonalInfo(person);
+        System.out.println("EmployeeController===> " + employee.toString());
         return employee;
     }
 
