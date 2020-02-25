@@ -1,0 +1,13 @@
+### Port Info
+- 9000
+### URLs 
+- ##### for one person
+    - http://localhost:9000/person-info-service/person/1
+- ##### for all persons
+    - http://localhost:9000/person-info-service/person
+
+### Errors
+- #### No serializer found for class org.hibernate.proxy.pojo.javassist.Javassist?
+    - Solution: Add @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) on your entity
+    - Cause: Hibernate is serializing internal stuff 
+    - Link: https://hibernate.atlassian.net/browse/OGM-641?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel
