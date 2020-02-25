@@ -1,3 +1,4 @@
+# person-info-service
 ### Port Info
 - 9000
 ### URLs 
@@ -11,3 +12,7 @@
     - Solution: Add @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) on your entity
     - Cause: Hibernate is serializing internal stuff 
     - Link: https://hibernate.atlassian.net/browse/OGM-641?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel
+
+# naming server
+### Port Info
+- http://localhost:8761
