@@ -15,4 +15,10 @@
 
 # naming server
 ### Port Info
+- 8761
+### URLS 
 - http://localhost:8761
+
+# API Gateway Server
+### Port Info
+- 8111
