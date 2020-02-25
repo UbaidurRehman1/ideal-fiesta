@@ -30,9 +30,9 @@ services:
     api-gateway-server:
         build: ./api_gateway_server
         expose:
-        - 8755
+        - 8111
         ports:
-        - 8755:8755
+        - 8111:8111
         volumes:
         - ./api_gateway_server:/volume         
         networks: 
@@ -44,7 +44,7 @@ services:
     person-info-service:
         build: ./PersonInfo
         expose:
-        - 9001
+        - 9000
         ports:
         - 9001:9001
         volumes:
@@ -55,7 +55,8 @@ services:
         - naming-server
         - api-gateway-server
         - zipkin
-        - rabbitmq            
+        - rabbitmq
+        - db           
     # currency-conversion-service:
     #     build: ./CurrencyConversionService
     #     expose:

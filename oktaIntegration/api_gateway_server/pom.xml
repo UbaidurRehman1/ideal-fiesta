@@ -11,8 +11,8 @@
 	<groupId>com.codemaster.okta</groupId>
 	<artifactId>api-gateway-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>api-gateway-server</name>
+	<description>API gateway server for micro-services</description>
 
 	<properties>
 		<java.version>13</java.version>
