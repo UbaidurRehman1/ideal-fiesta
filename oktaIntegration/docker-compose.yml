@@ -46,7 +46,7 @@ services:
         expose:
         - 9000
         ports:
-        - 9001:9001
+        - 9000:9000
         volumes:
         - ./PersonInfo:/volume         
         networks: 
@@ -57,22 +57,23 @@ services:
         - zipkin
         - rabbitmq
         - db           
-    # currency-conversion-service:
-    #     build: ./CurrencyConversionService
-    #     expose:
-    #     - 8100
-    #     ports:
-    #     - 8100:8100
-    #     volumes:
-    #     - ./CurrencyConversionService:/volume         
-    #     networks: 
-    #     - sn
-    #     depends_on:
-    #     - eureka-naming-server
-    #     - netflix-zuul-api-gateway-server
-    #     - currency-exchnage-service
-    #     - zipkin
-    #     - rabbitmq            
+    employee-info-service:
+        build: ./employee-info-service
+        expose:
+        - 9500
+        ports:
+        - 9500:9500
+        volumes:
+        - ./employee-info-service:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - api-gateway-server
+        - person-info-service
+        - zipkin
+        - rabbitmq
+        - db           
     db:
       image: mysql:8.0.18
       restart: always

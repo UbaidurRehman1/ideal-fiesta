@@ -5,4 +5,7 @@ mvn clean package -DskipTests
 cd ../PersonInfo;
 mvn clean package -DskipTests
 cd ..
+cd employee-info-service
+mvn clean package -DskipTests
+cd ..
 docker-compose up --build

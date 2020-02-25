@@ -22,3 +22,10 @@
 # API Gateway Server
 ### Port Info
 - 8111
+
+# Employee Info Service
+### Port Info
+- 9500
+### URLs
+- http://localhost:9500/employee/1
+- http://localhost:9500/employee
