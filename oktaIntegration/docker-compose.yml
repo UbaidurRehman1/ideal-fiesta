@@ -1,0 +1,94 @@
+version: '3'
+services:
+    rabbitmq:
+        image: rabbitmq:management
+        restart: on-failure
+        expose:
+          - "5672"
+        ports:
+          - 5672:5672
+          - 15672:15672
+        networks: 
+          - sn
+    zipkin:
+        image: openzipkin/zipkin
+        restart: on-failure
+        ports:
+        - "9411:9411"
+        expose:
+        - "9411"
+        networks: 
+        - sn
+    naming-server:
+        build: ./naming_server
+        networks: 
+        - sn
+        expose:
+        - 8761
+        ports:
+        - 8761:8761
+    api-gateway-server:
+        build: ./api_gateway_server
+        expose:
+        - 8755
+        ports:
+        - 8755:8755
+        volumes:
+        - ./api_gateway_server:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - zipkin
+        - rabbitmq        
+    person-info-service:
+        build: ./PersonInfo
+        expose:
+        - 9001
+        ports:
+        - 9001:9001
+        volumes:
+        - ./PersonInfo:/volume         
+        networks: 
+        - sn
+        depends_on:
+        - naming-server
+        - api-gateway-server
+        - zipkin
+        - rabbitmq            
+    # currency-conversion-service:
+    #     build: ./CurrencyConversionService
+    #     expose:
+    #     - 8100
+    #     ports:
+    #     - 8100:8100
+    #     volumes:
+    #     - ./CurrencyConversionService:/volume         
+    #     networks: 
+    #     - sn
+    #     depends_on:
+    #     - eureka-naming-server
+    #     - netflix-zuul-api-gateway-server
+    #     - currency-exchnage-service
+    #     - zipkin
+    #     - rabbitmq            
+    db:
+      image: mysql:8.0.18
+      restart: always
+      environment:
+          MYSQL_DATABASE: 'db'
+          MYSQL_USER: 'root'
+          MYSQL_PASSWORD: 'password'
+          MYSQL_ROOT_PASSWORD: 'password'
+      ports:
+      - '3306:3306'
+      expose:
+      - '3306'
+      volumes:
+      - vc1:/var/lib/mysql
+      networks:
+      - sn
+volumes:
+    vc1:
+networks:
+    sn: {}

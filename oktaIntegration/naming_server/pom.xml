@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codemaster.okta</groupId>
-	<artifactId>naming_server</artifactId>
+	<artifactId>naming-server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>naming-server</name>
 	<description>Naming server for microservices</description>

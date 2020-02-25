@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codemaster.okta</groupId>
-	<artifactId>PersonInfo</artifactId>
+	<artifactId>person-info-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>PersonInfo</name>
 	<description>This is a micro services which gives a person info connected with database.</description>
