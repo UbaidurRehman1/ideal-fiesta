@@ -20,6 +20,7 @@ import com.codemaster.okta.restclient.services.UserService;
 
 import static org.springframework.http.ResponseEntity.ok;
 
+
 import javax.annotation.PostConstruct;
 
 @RestController
@@ -61,4 +62,5 @@ public class AuthController {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
     }
+
 }

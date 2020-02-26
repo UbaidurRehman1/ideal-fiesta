@@ -39,7 +39,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/employee").permitAll()
                 .anyRequest().authenticated()
             .and()
-            .apply(new JwtSecurityConfigurer(jwtTokenProvider));
+            .apply(new JwtSecurityConfigurer(jwtTokenProvider))
+            .and()
+            .oauth2Login();
         //@formatter:on
     }
 
