@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient("api-gateway-server")
 @RibbonClients({
     @RibbonClient("employee-info-service"),
-    @RibbonClient("authUsers")
+    @RibbonClient("auth-users-service")
 })
 public interface OpenFeignProxy 
 {
@@ -25,6 +25,6 @@ public interface OpenFeignProxy
     @GetMapping("employee-info-service/employee")
     public List<Employee> getEmployees();
 
-    @GetMapping("authUsers/username")
-    public User getUser(@PathVariable("username") String username);
+    @GetMapping("auth-users-service/users/{userName}")
+    public User getUser(@PathVariable("userName") String username);
 }

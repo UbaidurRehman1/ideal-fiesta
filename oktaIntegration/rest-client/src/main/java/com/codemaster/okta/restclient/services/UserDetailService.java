@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserDetailService implements UserDetailsService {
 
     @Autowired 
@@ -21,7 +23,7 @@ public class UserDetailService implements UserDetailsService {
         User user = proxy.getUser(username);
         if (user != null)
         {
-            return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), new ArrayList<>());
+            return new org.springframework.security.core.userdetails.User(user.getUsername(), "$2a$10$slYQmyNdGzTn7ZLBXBChFOC9f6kFjAqPhccnP6DxlWXx2lPk1C3G6", new ArrayList<>());
         }
         else
         {
