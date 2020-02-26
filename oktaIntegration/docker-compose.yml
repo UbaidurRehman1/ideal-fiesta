@@ -74,24 +74,24 @@ services:
         - zipkin
         - rabbitmq
         - db
-    rest-client:
-        build: ./rest-client
-        expose:
-        - 8000
-        ports:
-        - 8000:8000
-        volumes:
-        - ./rest-client:/volume
-        networks:
-        - sn
-        depends_on:
-        - naming-server
-        - api-gateway-server
-        - person-info-service
-        - employee-info-service
-        - zipkin
-        - rabbitmq
-        - db           
+    # rest-client:
+    #     build: ./rest-client
+    #     expose:
+    #     - 8000
+    #     ports:
+    #     - 8000:8000
+    #     volumes:
+    #     - ./rest-client:/volume
+    #     networks:
+    #     - sn
+    #     depends_on:
+    #     - naming-server
+    #     - api-gateway-server
+    #     - person-info-service
+    #     - employee-info-service
+    #     - zipkin
+    #     - rabbitmq
+    #     - db           
     db:
       image: mysql:8.0.18
       restart: always
