@@ -1,24 +1,26 @@
+# Requirements
+- Docker
+- maven
+- Java 13
+
+# How to run
+- git clone https://github.com/UbaidurRehman1/ideal-fiesta
+- cd ideal-fiesta/oktaIntegration
+- ./run.sh
 
 # Naming Server
-### Port Info
-- 8761
-### URLS 
-- http://localhost:8761
-
-# API Gateway Server
-### Port Info
-- 8111
-
-# Rest Client
-### Port Info
-- 8000
+-  http://localhost:8761
 
 ## How to Authenticate:
- - post reuqst to http://localhost:8000/auth/signin with request body {"username": "ubaid", "password": "1234"}
- - Then use this token, you can check the following URLs
- - you can check okta config using http://localhost:8000/auth/okta
- - currently I have configured OKTA with my username 
-
- ### URLs
+- post reuqst to http://localhost:8000/auth/signin with request body {"username": "ubaid", "password": "1234"}
+- Then use this token, you can check the following URLs
+- you can check okta config using 
+- currently I have configured OKTA with my username 
+- http://localhost:8000/auth/okta
 - http://localhost:8000/app/employee/1
 - http://localhost:8000/app/employee
+
+
+
+
+
