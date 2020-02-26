@@ -1,0 +1,16 @@
+cd api_gateway_server;
+mvn clean  
+cd ../naming_server;
+mvn clean  
+cd ../PersonInfo;
+mvn clean  
+cd ..
+cd employee-info-service
+mvn clean  
+cd ..
+cd rest-client
+mvn clean  
+cd ..
+cd auth-users-service
+mvn clean  
+cd ..

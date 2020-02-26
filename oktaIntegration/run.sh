@@ -11,4 +11,7 @@ cd ..
 cd rest-client
 mvn clean package -DskipTests
 cd ..
-docker-compose up --build
+cd auth-users-service
+mvn clean package -DskipTests
+cd ..
+# docker-compose up --build

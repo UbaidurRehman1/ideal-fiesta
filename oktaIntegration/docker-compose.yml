@@ -38,9 +38,7 @@ services:
         networks: 
         - sn
         depends_on:
-        - naming-server
-        - zipkin
-        - rabbitmq        
+        - naming-server   
     person-info-service:
         build: ./PersonInfo
         expose:
@@ -54,8 +52,6 @@ services:
         depends_on:
         - naming-server
         - api-gateway-server
-        - zipkin
-        - rabbitmq
         - db           
     employee-info-service:
         build: ./employee-info-service
@@ -71,27 +67,38 @@ services:
         - naming-server
         - api-gateway-server
         - person-info-service
-        - zipkin
-        - rabbitmq
         - db
-    # rest-client:
-    #     build: ./rest-client
-    #     expose:
-    #     - 8000
-    #     ports:
-    #     - 8000:8000
-    #     volumes:
-    #     - ./rest-client:/volume
-    #     networks:
-    #     - sn
-    #     depends_on:
-    #     - naming-server
-    #     - api-gateway-server
-    #     - person-info-service
-    #     - employee-info-service
-    #     - zipkin
-    #     - rabbitmq
-    #     - db           
+    auth-users-service:
+        build: ./auth-users-service
+        expose:
+        - 9600
+        ports:
+        - 9600:9600
+        volumes:
+        - ./auth-users-service:/volume
+        networks:
+        - sn
+        depends_on:
+        - naming-server
+        - api-gateway-server
+        - db
+    rest-client:
+        build: ./rest-client
+        expose:
+        - 8000
+        ports:
+        - 8000:8000
+        volumes:
+        - ./rest-client:/volume
+        networks:
+        - sn
+        depends_on:
+        - naming-server
+        - api-gateway-server
+        - person-info-service
+        - employee-info-service
+        - auth-users-service
+        - db           
     db:
       image: mysql:8.0.18
       restart: always
