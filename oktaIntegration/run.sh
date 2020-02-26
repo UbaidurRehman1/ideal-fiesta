@@ -14,4 +14,4 @@ cd ..
 cd auth-users-service
 mvn clean package -DskipTests
 cd ..
-# docker-compose up --build
+docker-compose up --build

@@ -98,7 +98,8 @@ services:
         - person-info-service
         - employee-info-service
         - auth-users-service
-        - db           
+        - db    
+        restart: on-failure       
     db:
       image: mysql:8.0.18
       restart: always
