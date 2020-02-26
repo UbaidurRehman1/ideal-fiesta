@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table
 public class User
@@ -19,7 +20,6 @@ public class User
     private String username;
     @Column
     private String password;
-
     public User() {
     }
 

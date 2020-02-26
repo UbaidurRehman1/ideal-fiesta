@@ -18,5 +18,10 @@ public class UserServiceImp implements UserService
     {
         return repo.getUserByName(username);
     }
+
+    @Override
+    public User saveUser(String username, String password) {
+        return repo.save(new User(username, password));
+    }
     
 }

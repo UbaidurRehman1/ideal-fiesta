@@ -11,6 +11,8 @@ import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient("api-gateway-server")
 @RibbonClients({
@@ -27,4 +29,7 @@ public interface OpenFeignProxy
 
     @GetMapping("auth-users-service/users/{userName}")
     public User getUser(@PathVariable("userName") String username);
+
+    @PostMapping("auth-users-service/users")
+    public void saveUser(@RequestBody User user);
 }

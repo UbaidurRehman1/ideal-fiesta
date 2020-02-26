@@ -1,17 +1,64 @@
 package com.codemaster.okta.restclient.entity;
 
-public class User
-{
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+
+public class User implements UserDetails {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 966360562827343832L;
+
     private Long id;
+
     private String username;
+
     private String password;
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+
+    
+    private List<String> roles = Arrays.asList("ROLE_USER");
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 
-    public User() {
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.username;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
     public Long getId() {
@@ -22,19 +69,16 @@ public class User
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public List<String> getRoles() {
+        return roles;
     }
 
-    public void setUsername(String username) {
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
+
+    public User(String username, String password) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
-    }    
+    }
 }
