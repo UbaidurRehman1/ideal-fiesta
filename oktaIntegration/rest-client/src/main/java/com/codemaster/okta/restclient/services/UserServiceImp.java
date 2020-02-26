@@ -23,5 +23,11 @@ public class UserServiceImp implements UserService
     public void saveUser(User user) {
         proxy.saveUser(user);
     }
+
+    @Override
+    public void deleteAll()
+    {
+        proxy.deleteAll();
+    }
     
 }

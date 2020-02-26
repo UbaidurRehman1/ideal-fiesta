@@ -6,4 +6,5 @@ public interface UserService
 {
     public User findUserByUserName(String username);
     public void saveUser(User user);
+    public void deleteAll();
 }

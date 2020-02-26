@@ -2,11 +2,13 @@ package com.codemaster.okta.restclient.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,7 @@ import com.codemaster.okta.restclient.services.UserService;
 
 import static org.springframework.http.ResponseEntity.ok;
 
+import java.security.Principal;
 
 import javax.annotation.PostConstruct;
 
@@ -38,10 +41,10 @@ public class AuthController {
 
     @Autowired
     PasswordEncoder encoder;
-
     @PostConstruct
     public void saveFirstUser()
     {
+        service.deleteAll();
         service.saveUser(new User("ubaid", encoder.encode("1234")));
     }
 
@@ -61,6 +64,17 @@ public class AuthController {
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
+    }
+
+    @GetMapping("/")
+    public String helloWorld(){
+        return "Hello World";
+    }
+
+    @PreAuthorize("#oauth2.hasScope('profile')")
+    @GetMapping("/okta")
+    public String helloWorldProtected(Principal principal) {
+        return "Hello VIP " + principal.toString();
     }
 
 }

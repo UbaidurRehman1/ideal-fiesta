@@ -23,5 +23,10 @@ public class UserServiceImp implements UserService
     public User saveUser(String username, String password) {
         return repo.save(new User(username, password));
     }
+
+    @Override
+    public void deleteAll() {
+        repo.deleteAll();
+    }
     
 }

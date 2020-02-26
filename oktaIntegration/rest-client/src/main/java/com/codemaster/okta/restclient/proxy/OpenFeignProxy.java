@@ -9,6 +9,7 @@ import com.codemaster.okta.restclient.entity.User;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.netflix.ribbon.RibbonClients;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,4 +33,7 @@ public interface OpenFeignProxy
 
     @PostMapping("auth-users-service/users")
     public void saveUser(@RequestBody User user);
+
+    @DeleteMapping("auth-users-service/users")
+    public void deleteAll();
 }

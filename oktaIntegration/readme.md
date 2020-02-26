@@ -1,19 +1,5 @@
-# person-info-service
-### Port Info
-- 9000
-### URLs 
-- ##### for one person
-    - http://localhost:9000/person-info-service/person/1
-- ##### for all persons
-    - http://localhost:9000/person-info-service/person
 
-### Errors
-- #### No serializer found for class org.hibernate.proxy.pojo.javassist.Javassist?
-    - Solution: Add @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) on your entity
-    - Cause: Hibernate is serializing internal stuff 
-    - Link: https://hibernate.atlassian.net/browse/OGM-641?page=com.atlassian.jira.plugin.system.issuetabpanels%3Aall-tabpanel
-
-# naming server
+# Naming Server
 ### Port Info
 - 8761
 ### URLS 
@@ -23,16 +9,16 @@
 ### Port Info
 - 8111
 
-# Employee Info Service
-### Port Info
-- 9500
-### URLs
-- http://localhost:9500/employee/1
-- http://localhost:9500/employee
-
 # Rest Client
 ### Port Info
 - 8000
-### URLs
+
+## How to Authenticate:
+ - post reuqst to http://localhost:8000/auth/signin with request body {"username": "ubaid", "password": "1234"}
+ - Then use this token, you can check the following URLs
+ - you can check okta config using http://localhost:8000/auth/okta
+ - currently I have configured OKTA with my username 
+
+ ### URLs
 - http://localhost:8000/app/employee/1
 - http://localhost:8000/app/employee
