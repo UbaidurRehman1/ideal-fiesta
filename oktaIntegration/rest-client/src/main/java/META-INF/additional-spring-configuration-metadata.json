@@ -3,5 +3,11 @@
       "name": "spring.zipkin.base-url",
       "type": "java.lang.String",
       "description": "base url for zipkin"
+    },
+    {
+      "name": "jwt.secret",
+      "type": "java.lang.String",
+      "description": "base url for zipkin"
     }
+
 ]}
