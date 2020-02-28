@@ -1,30 +1,42 @@
 package com.codemaster.okta.restclient.entity;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
+
+@Entity
+@Table
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements UserDetails {
-    /**
-     *
-     */
     private static final long serialVersionUID = 966360562827343832L;
 
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column
     private String username;
-
+    @Column
     private String password;
 
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 
-    
-    private List<String> roles = Arrays.asList("ROLE_USER");
+    public User() {
+    }
+
+    @Transient
+    private List<String> roles = Collections.singletonList("ROLE_USER");
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -61,6 +73,10 @@ public class User implements UserDetails {
         return true;
     }
 
+    public List<String> getRoles() {
+        return roles;
+    }
+
     public Long getId() {
         return id;
     }
@@ -69,16 +85,13 @@ public class User implements UserDetails {
         this.id = id;
     }
 
-    public List<String> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<String> roles) {
-        this.roles = roles;
-    }
-
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }

@@ -3,15 +3,33 @@ package com.codemaster.okta.restclient.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-public class Employee extends Person
+import javax.persistence.*;
+
+
+@Entity
+@Table
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Employee
 {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String username;
+    @Column
     @JsonIgnoreProperties
     private String password;
+    @Column
     private Integer salary;
+    @Column
     private String position;
+    @Column
     private Integer year;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Person employeeDetail;
 
     public Employee(String username, String password, Integer salary, String position, Integer year) {
         this.username = username;
@@ -72,18 +90,35 @@ public class Employee extends Person
         this.year = year;
     }
 
-    @Override
-    public String toString() {
-        return "Employee [id=" + id + ", password=" + password + ", position=" + position + ", salary=" + salary
-                + ", username=" + username + ", year=" + year + "]";
+
+    public Person getEmployeeDetail() {
+        return employeeDetail;
     }
 
-    public Employee addPersonalInfo(Person person)
-    {
-        this.setName(person.getName());
-        this.setAge(person.getAge());
-        this.setGender(person.getGender());
-        this.setDob(person.getDob());
-        return this;
+    public void setEmployeeDetail(Person employeeDetail) {
+        this.employeeDetail = employeeDetail;
+    }
+
+    //    public Employee addPersonalInfo(Person person)
+//    {
+//        this.setName(person.getName());
+//        this.setAge(person.getAge());
+//        this.setGender(person.getGender());
+//        this.setDob(person.getDob());
+//        return this;
+//    }
+
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", salary=" + salary +
+                ", position='" + position + '\'' +
+                ", year=" + year +
+                ", employeeDetail=" + employeeDetail +
+                '}';
     }
 }

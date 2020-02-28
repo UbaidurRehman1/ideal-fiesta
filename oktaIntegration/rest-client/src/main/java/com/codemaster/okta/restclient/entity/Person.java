@@ -2,24 +2,31 @@ package com.codemaster.okta.restclient.entity;
 
 import java.sql.Date;
 
-// import javax.persistence.Column;
-// import javax.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.GenerationType;
-// import javax.persistence.Id;
-// import javax.persistence.Table;
+ import javax.persistence.Column;
+ import javax.persistence.Entity;
+ import javax.persistence.GeneratedValue;
+ import javax.persistence.GenerationType;
+ import javax.persistence.Id;
+ import javax.persistence.Table;
 
-// import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-// @Entity
-// @Table
-// @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Person
+ @Entity
+ @Table
+ @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+ public class Person
 {
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column
     private String name;
+    @Column
     private Integer age;
+    @Column
     private Character gender;
+    @Column
     private Date dob;
     
     public Person(String name, Integer age, Character gender, Date dob) {

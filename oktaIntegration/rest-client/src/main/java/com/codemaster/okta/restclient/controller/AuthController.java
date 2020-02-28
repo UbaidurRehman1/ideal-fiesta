@@ -30,17 +30,22 @@ import javax.annotation.PostConstruct;
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Autowired
     AuthenticationManager authenticationManager;
-
-    @Autowired
     JwtTokenProvider jwtTokenProvider;
-
-    @Autowired
     UserService service;
-
-    @Autowired
     PasswordEncoder encoder;
+
+    public AuthController(@Autowired AuthenticationManager authenticationManager,
+                          @Autowired JwtTokenProvider jwtTokenProvider,
+                          @Autowired UserService service,
+                          @Autowired PasswordEncoder encoder)
+    {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.service = service;
+        this.encoder = encoder;
+    }
+
     @PostConstruct
     public void saveFirstUser()
     {
