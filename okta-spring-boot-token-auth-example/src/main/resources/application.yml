@@ -1,0 +1,8 @@
+server:
+  port: 8080
+                                       
+okta:
+  oauth2:
+    issuer: https://dev-979232.okta.com/oauth2/default
+    clientId: 0oa2tnys1drswlwAD4x6
+    clientSecret: HyM2-AJKO7C14RSgedGpCAfzRglA2eWl8SiAjXIQ
